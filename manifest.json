@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "AliExpress Mini Dashboard",
+    "description": "Shows a mini dashboard when clicked, only on AliExpress.",
+    "version": "1.0",
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "scripting"
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.aliexpress.com/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
+}
