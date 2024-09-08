@@ -1,4 +1,7 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (typeof browser === "undefined") {
+        var browser = chrome;
+    }
     if (request.action === "getTotalSpent") {
         // Recalculate the total spent
         let totalSpent = Array.from(

@@ -1,3 +1,8 @@
+// Polyfill to support both Chrome and Firefox
+if (typeof browser === "undefined") {
+    var browser = chrome;
+}
+
 // Check the active tab to ensure it's AliExpress
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
     let tab = tabs[0];
