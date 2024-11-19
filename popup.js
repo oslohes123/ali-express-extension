@@ -20,13 +20,13 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
                     tab.id,
                     { action: "getTotalSpent" },
                     function (response) {
-                        if (response && response.totalSpent !== undefined) {
-                            // Update the popup UI with the total spent
-                            document.querySelector(".spent").textContent =
-                                response.totalSpent;
+                        if (response && response.totalSpent !== undefined && response.itemCount !== undefined) {
+                            // Update the popup UI with the total spent and item count
+                            document.querySelector(".spent").textContent = `$${response.totalSpent}`;
+                            document.querySelector(".items").textContent = `${response.itemCount} items`;
                         } else {
-                            document.querySelector(".spent").textContent =
-                                "Error retrieving data";
+                            document.querySelector(".spent").textContent = "Error retrieving data";
+                            document.querySelector(".items").textContent = "";
                         }
                     }
                 );
@@ -34,6 +34,6 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         );
     } else {
         document.querySelector(".spent").textContent = "Not on AliExpress";
+        document.querySelector(".items").textContent = "";
     }
 });
-
